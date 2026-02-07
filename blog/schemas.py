@@ -1,21 +1,19 @@
 
 from pydantic import  BaseModel , ConfigDict
+from typing import List
 
-
-
-
-class Blog(BaseModel):
+class BlogBase(BaseModel):
     title: str
     body: str
+    
 
-
-
-
-class ShowBlog(BaseModel):
-        title:str
-        body:str
-        class Config():
+class Blog(BlogBase):
+      class Config():
             model_config = ConfigDict(from_attributes=True)
+      
+
+
+
 
 class User(BaseModel):
       name:str
@@ -28,6 +26,15 @@ class User(BaseModel):
 class ShowUser(BaseModel):
       name:str
       email:str
+      blogs: List[Blog] = []
       class Config():
             model_config = ConfigDict(from_attributes=True)
-    
+
+
+
+class ShowBlog(BaseModel):
+        title:str
+        body:str
+        creator: ShowUser
+        class Config():
+            model_config = ConfigDict(from_attributes=True)
