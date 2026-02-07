@@ -59,7 +59,7 @@ def all(db:Session = Depends(get_db)):
 
 
 @app.get('/blog/{id}', status_code=200, response_model=schemas.ShowBlog)
-def show(id ,response:Response, db:Session = Depends(get_db),):
+def show(id , response:Response, db:Session = Depends(get_db)):
     blog = db.query(models.Blog).filter(models.Blog.id == id).first()
     if not blog:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"Blog with the id  {id} is not available")
@@ -68,3 +68,12 @@ def show(id ,response:Response, db:Session = Depends(get_db),):
     return blog
 
 
+
+
+@app.post('/user')
+def create_user(request:schemas.User ,  db:Session = Depends(get_db)):
+    new_user = models.User(name=request.name, email=request.email, password=request.password)
+    db.add(new_user)
+    db.commit()
+    db.refresh(new_user)
+    return new_user
