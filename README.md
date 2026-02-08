@@ -20,9 +20,24 @@ In this project, I practice:
 
 Create and activate conda environment:
 
+`
 ```bash
 conda create -n fastapi-env python=3.10
 conda activate fastapi-env
+```
+
+## requirements.txt
+```bash
+fastapi
+uvicorn
+sqlalchemy
+passlib
+bcrypt
+python-jose
+python-multipart
+
+pip install -r requirements.txt
+
 ```
 
 ## Run the project
