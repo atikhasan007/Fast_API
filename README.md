@@ -74,7 +74,7 @@ blog/
 ---
 
 
-## 🌟 Course Contents
+## 🌟 Contents
 
 
 - Install and Setup  
