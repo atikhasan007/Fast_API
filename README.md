@@ -76,8 +76,7 @@ blog/
 
 ## 🌟 Course Contents
 
-- Framework Introduction  
-- Course Overview  
+
 - Install and Setup  
 - Project Structure Breakdown  
 - Path Parameters  
